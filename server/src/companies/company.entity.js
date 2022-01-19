@@ -9,8 +9,10 @@ const CompanySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  address: {
-    type: String,
+  role: { 
+    type: String, 
+    enum: ['admin', 'moderator'], 
+    required: true,
   },
   profilePhotoLocation: {
     type: String,
@@ -19,8 +21,9 @@ const CompanySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
 });
 
-const Company = mongoose.model('Company', CompanySchema);
+const Company = mongoose.model('AdminAdd', CompanySchema);
 
 module.exports = { CompanySchema, Company };

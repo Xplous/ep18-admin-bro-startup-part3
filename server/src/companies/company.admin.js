@@ -4,12 +4,13 @@ const { Company } = require('./company.entity');
 const {
   after: passwordAfterHook,
   before: passwordBeforeHook,
-} = require('./actions/password.hook');
+} = require('../actions/password.hook');
 
 const {
   after: uploadAfterHook,
   before: uploadBeforeHook,
-} = require('./actions/upload-image.hook');
+} = require('../actions/upload-image.hook');
+const canModifyUsers = ({ currentAdmin }) => currentAdmin && currentAdmin.role === 'admin';
 
 /** @type {AdminBro.ResourceOptions} */
 const options = {
@@ -51,9 +52,7 @@ const options = {
         return uploadBeforeHook(modifiedRequest, context);
       },
     },
-    show: {
-      isVisible: false,
-    },
+    list:{ isAccessible: canModifyUsers },
   },
 };
 

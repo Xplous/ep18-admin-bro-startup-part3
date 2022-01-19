@@ -14,11 +14,10 @@ const { Company } = require('./companies/company.entity');
  */
 const buildAdminRouter = (admin) => {
   const router = buildAuthenticatedRouter(admin, {
-    cookieName: 'admin-bro',
-    cookiePassword: 'superlongandcomplicatedname',
+    cookieName: 'admins',
+    cookiePassword: 'admins',
     authenticate: async (email, password) => {
       const company = await Company.findOne({ email });
-
       if (company && await argon2.verify(company.encryptedPassword, password)) {
         return company.toJSON();
       }
