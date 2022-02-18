@@ -5,9 +5,11 @@ AdminBro.registerAdapter(AdminBroMongoose);
 
 const AdminCompany = require('./companies/company.admin');
 const ImageAdd = require('./companies/Image.admin');
+const Gallery = require('./companies/gallery.admin')
 /** @type {import('admin-bro').AdminBroOptions} */
 const options = {
-  resources: [AdminCompany, ImageAdd],
+  resources: [AdminCompany, ImageAdd, Gallery],
+  
 };
 
 module.exports = options;

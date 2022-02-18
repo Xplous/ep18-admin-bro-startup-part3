@@ -13,7 +13,7 @@ const app = express();
 const port = 3001;
 mongoose.set('useFindAndModify', false);
 const run = async () => {
-  await mongoose.connect('mongodb+srv://admin:admin@cluster0.wax8g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+  await mongoose.connect('mongodb+srv://admin:admin@cluster0.ixa7w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
    {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -24,6 +24,7 @@ const run = async () => {
   const admin = new AdminBro(options);
   const router = buildAdminRouter(admin);
   app.use(admin.options.rootPath, router);
+  app.use('/gallery', express.static('gallery'))
   app.use('/uploads', express.static('uploads'));
   app.get("/date", function(req, res){     
     ImageAdd.find({}, function(err, users){
