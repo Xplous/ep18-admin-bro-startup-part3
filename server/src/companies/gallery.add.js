@@ -7,7 +7,7 @@ const GallerySchema = new mongoose.Schema({
   profilePhotoLocation: {
     type: String,
   },
-  Date: {
+  Number: {
     type: String,
   },
 

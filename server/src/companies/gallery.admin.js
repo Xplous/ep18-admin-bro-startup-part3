@@ -19,7 +19,7 @@ const options = {
     profilePhotoLocation: {
       isVisible: true,
     },
-    Date: {
+    Number: {
       isVisible: true,
     },
     uploadImage: {
